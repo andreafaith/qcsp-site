@@ -1,0 +1,182 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* QCSP primary blue #1050CE - ensure this is properly set */
+    --primary: 220 88% 56%;
+    --primary-foreground: 210 40% 98%;
+
+    /* QCSP secondary yellow #84825E */
+    --secondary: 50 16% 44%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    /* QCSP tertiary red #FF3727 */
+    --destructive: 4 100% 57%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    /* Updated sidebar colors to match brand palette */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 220 88% 56%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Direct color variables for easier access */
+    --color-qcsp-primary: #1050CE;
+    --color-qcsp-primary-dark: #0F3F9E;
+    --color-qcsp-secondary: #84825E;
+    --color-qcsp-tertiary-darker: #FF3727;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Dark mode QCSP blue */
+    --primary: 220 88% 56%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    /* Dark mode QCSP yellow */
+    --secondary: 50 16% 44%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    /* Dark mode QCSP red */
+    --destructive: 4 100% 57%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    
+    /* Updated dark sidebar colors */
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 220 88% 56%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-libreCaslon;
+  }
+  
+  h1, h2, h3, h4, h5, h6, button, .nav-item {
+    @apply font-montserrat font-light;
+  }
+}
+
+@layer components {
+  /* Add !important to ensure styles take precedence */
+  .quantum-grid {
+    background-image: radial-gradient(#1050CE 1px, transparent 1px), radial-gradient(#1050CE 1px, transparent 1px) !important;
+    background-size: 30px 30px !important;
+    background-position: 0 0, 15px 15px !important;
+    opacity: 0.2 !important;
+  }
+  
+  .futuristic-border {
+    @apply border border-qcsp-primary/30 shadow-lg shadow-qcsp-primary/20 rounded-md !important;
+  }
+  
+  .quantum-card {
+    @apply bg-white/90 backdrop-blur-sm rounded-lg shadow-xl border border-qcsp-primary/20 overflow-hidden relative !important;
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-300 !important;
+  }
+  
+  .hover-glow:hover {
+    @apply shadow-md shadow-qcsp-primary/30 !important;
+  }
+  
+  /* Force primary button to use QCSP colors */
+  .primary-button {
+    @apply bg-[#1050CE] text-white font-montserrat font-medium px-6 py-2 rounded-md hover:bg-[#0F3F9E] transition-all !important;
+  }
+  
+  .secondary-button {
+    @apply bg-transparent border border-[#1050CE] text-[#1050CE] font-montserrat font-medium px-6 py-2 rounded-md hover:bg-[#1050CE]/10 transition-all !important;
+  }
+  
+  .quantum-particle {
+    @apply absolute w-2 h-2 rounded-full bg-[#1050CE]/50 animate-pulse-light !important;
+  }
+  
+  .circuit-line {
+    @apply absolute bg-[#1050CE]/20 !important;
+  }
+  
+  /* Utility classes based on brand guidelines */
+  .text-primary {
+    @apply text-[#1050CE] !important;
+  }
+  
+  .text-secondary {
+    @apply text-[#84825E] !important;
+  }
+  
+  .text-tertiary {
+    @apply text-[#FF3727] !important;
+  }
+  
+  .bg-primary-gradient {
+    @apply bg-gradient-to-r from-[#1050CE] to-[#14377C] !important;
+  }
+  
+  .bg-accent-gradient {
+    @apply bg-gradient-to-r from-[#ACA843] to-[#E5DB00] !important;
+  }
+}
